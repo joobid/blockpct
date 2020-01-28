@@ -2,6 +2,8 @@
 
 ![BLOCKPCT](./utils/images/blockpct.png)
 
+A private and independent blockchain network promoted by Asociación de Parques Científicos y Tecnológicos de España (APTE) which will provide easy, fast, and secure access to this technology to more than 8000 companies and entities located in the 52 operational science and technology parks that are members of the Association.
+
 Why worrying about the low-level complexities of blockchain technology,
 and having to worry about building your network when you can leverage
 the benefits of the technology without having to know the details of
