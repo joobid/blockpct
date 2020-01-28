@@ -1,0 +1,19 @@
+{
+	"id": "256f0291-5921-4f47-879f-4a8bdfcae72b",
+	"name": "Token API",
+	"values": [
+		{
+			"key": "URL",
+			"value": "https://dev.virtualtrust.io/token",
+			"enabled": true
+		},
+		{
+			"key": "authToken",
+			"value": "",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-01-13T10:47:12.857Z",
+	"_postman_exported_using": "Postman/7.15.0"
+}

@@ -1,0 +1,387 @@
+{
+	"info": {
+		"_postman_id": "bb3e496c-6025-41f6-a17f-b5831a5acf09",
+		"name": "coren-settleapi",
+		"description": "First version Settlement-API project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Healthcheck",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/healthcheck",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//Execution",
+							"",
+							"try {",
+							"",
+							"    // tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    postman.setEnvironmentVariable(\"authToken\", jsonData.message);",
+							"}",
+							"catch(e) {",
+							"    console.error(e);",
+							"}",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"test\",\n  \"password\": \"test\"\n}"
+				},
+				"url": {
+					"raw": "{{URL}}/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new Settlement structure",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//Execution",
+							"",
+							"try {",
+							"",
+							"    // tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    postman.setEnvironmentVariable(\"ID\", jsonData.message);",
+							"}",
+							"catch(e) {",
+							"    console.error(e);",
+							"}",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"settleid\": \"1\",\n  \"aggregates\": \"['msg']\",\n  \"aggregationType\": \"string\",\n  \"primaryKey\": \"string\",\n  \"settlementType\": \"string\",\n  \"record\": {}\n}"
+				},
+				"url": {
+					"raw": "{{URL}}/settlement/create",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"settlement",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get status of settlement structure",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/settlement/:settleId",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"settlement",
+						":settleId"
+					],
+					"variable": [
+						{
+							"key": "settleId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get settlement structure history",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/settlement/:settleId/history",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"settlement",
+						":settleId",
+						"history"
+					],
+					"variable": [
+						{
+							"key": "settleId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all settlements performed",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/settlement/:settleId/settled",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"settlement",
+						":settleId",
+						"settled"
+					],
+					"variable": [
+						{
+							"key": "settleId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Settlement structure with record",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "New record"
+				},
+				"url": {
+					"raw": "{{URL}}/settlement/:settleId/update",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"settlement",
+						":settleId",
+						"update"
+					],
+					"variable": [
+						{
+							"key": "settleId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Settle a settlement structure",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"Timestamp\": 0,\n  \"aggregates\": {}\n}"
+				},
+				"url": {
+					"raw": "{{URL}}/settlement/:settleId/settle",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"settlement",
+						":settleId",
+						"settle"
+					],
+					"variable": [
+						{
+							"key": "settleId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clear a settlement structure",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{URL}}/settlement/:settleId/clear",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"settlement",
+						":settleId",
+						"clear"
+					],
+					"variable": [
+						{
+							"key": "settleId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

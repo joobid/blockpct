@@ -1,0 +1,19 @@
+{
+	"id": "bb5e2983-de63-42a9-9026-f5123241647b",
+	"name": "Track API",
+	"values": [
+		{
+			"key": "URL",
+			"value": "https://dev.virtualtrust.io/track",
+			"enabled": true
+		},
+		{
+			"key": "authToken",
+			"value": "",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-01-13T10:21:29.505Z",
+	"_postman_exported_using": "Postman/7.15.0"
+}
